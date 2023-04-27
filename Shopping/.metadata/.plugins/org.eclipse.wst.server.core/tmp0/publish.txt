@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Fri Apr 21 10:24:36 KST 2023
+org.eclipse.jst.jee.server\:Shopping\ Mall=C\:\\FirstJavaWeb\\apache-tomcat-9.0.71\\apache-tomcat-9.0.71\\wtpwebapps\\Shopping Mall
+org.eclipse.jst.jee.server\:Puppyhome=C\:\\FirstJavaWeb\\apache-tomcat-9.0.71\\apache-tomcat-9.0.71\\wtpwebapps\\Puppyhome

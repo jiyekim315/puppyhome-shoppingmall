@@ -1,0 +1,6 @@
+package shop.puppyhome.controller_product;
+
+public class SeniorProductController implements Fire{
+	public void updateFirebase(int index) {
+	}
+}

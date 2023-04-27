@@ -1,0 +1,85 @@
+package shop.puppyhome.controller_product;
+
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import shop.puppyhome.controller.Action;
+import shop.puppyhome.controller.ActionForward;
+import shop.puppyhome.dao.ProductDAOImpl;
+import shop.puppyhome.vo.BasketVO;
+import shop.puppyhome.vo.MemberVO;
+import shop.puppyhome.vo.OrderVO;
+import shop.puppyhome.vo.ProductVO;
+
+public class PaymentController implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+
+		String id = (String)session.getAttribute("id");
+
+
+
+
+
+
+		if(id==null) {
+			out.println("<script>");
+			out.println("if(confirm('로그인 후 이용가능합니다 로그인 하시겠습니까?')) {");
+			out.println("location='member_login.shop';}");
+			out.println("</script>");
+		} else {
+			request.setCharacterEncoding("UTF-8");
+
+			String product_title = request.getParameter("product_title");
+			int totalcost = Integer.parseInt(request.getParameter("totalcost"));
+			int product_cnt = Integer.parseInt(request.getParameter("num"));
+			
+			String user_name = request.getParameter("user_name");
+			String postCode = request.getParameter("postCode");
+			String roadAddr = request.getParameter("roadAddr");
+			String detailAddr = request.getParameter("detailAddr");
+			String user_email = request.getParameter("user_email");
+			String user_phone = request.getParameter("user_phone");
+
+			ProductDAOImpl pdao = new ProductDAOImpl();
+
+
+
+			BasketVO b = new BasketVO();
+
+			/*m.setUser_id(id); m.setUser_name(user_name); 
+			m.setPostCode(postCode); m.setRoadAddr(roadAddr); m.setDetailAddr(detailAddr);
+			m.setUser_email(user_email); m.setUser_phone(user_phone);*/
+
+			//id값을 가진 멤버데이터를 가져옴 그리고 si.jsp에서 get방식으로 상품명 가격 갯수 총가격을 보내줘야됨!! 멤버데이터랑 get으로 받은 값을 결제테이블에 저장! 
+			OrderVO o = new OrderVO();
+			
+			ProductVO p = pdao.getProduct(product_title);
+			pdao.paymentProduct(m);
+			request.setAttribute("p", p);
+
+			out.println("<script>");
+			out.println("location='payment.shop';");	
+			out.println("</script>");
+		}
+
+
+
+
+
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("./page/product/payment.jsp"); // 뷰페이지 경로 설정.
+		return forward;
+	}
+
+}

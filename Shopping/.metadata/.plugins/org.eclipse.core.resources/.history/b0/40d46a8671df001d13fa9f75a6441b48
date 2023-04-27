@@ -1,0 +1,205 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> <%-- CDN 절대링크 --%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> <%-- CDN 절대링크 --%>
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script> <%-- CDN 절대링크 --%>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> <%-- CDN 절대링크 --%>
+<title>PuppyHome 상품등록</title>
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/images/favicon.ico" type="image/x-icon"> <%-- 파비콘 --%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/page/include/css/header.css"> <%-- header.css --%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/page/include/css/footer.css"> <%-- footer.css --%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/fontium/css/fontium.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/page/product/css/productRegister.css"/>
+
+
+<script type="text/javascript">
+
+	
+
+</script>
+
+</head>
+
+<body>
+	<%-- 전체 영역 --%>
+	<div class="wrap">
+		<%-- 헤더 영역 --%>
+		<header>
+			<%-- header include --%>
+			<jsp:include page="/page/include/header.jsp"/>
+		</header>
+		<%-- 본문 영역(ui깨질시 본인이 ui 수정바람..) --%>
+		<section>
+			<div class="main"> <%-- main 시작 --%>
+			
+			
+			
+				<form name="p" method="post" action="product_register_ok.shop">
+				<div class="adminMainpage"><%-- adminMainpage --%>
+				
+						<%-- admin 계정 --%>
+						<h1 class="name">Admin Page</h1>
+						 <div class="profile_img" align="center"> <%-- profile_img --%>
+						 <a href="http://localhost:8046/Shopping_Mall/adminMain.jsp"> 
+						 <img width="250px" height="200px" align="left" alt="adminImage" src="<%=request.getContextPath() %>/images/admin.jpg">
+						 </a>
+						 
+						 <div class="location" align="right">
+						 <a href="memberList.jsp"><b>회원 관리</b></a> | <a href="memberBoard.jsp"><b>고객 게시판</b></a> | <a href="productList.jsp"><b>상품 목록</b></a> | <a href="#"><b>매출 관리</b></a>
+						 </div>
+						 
+						  <h3 class="myinfo" align="left"><b>관리자 계정</b> <br></h3>
+						  	<div class="myinfo_date" align="left"> 가입일 : 2023.03.15.</div> <br>
+						  </div> <%-- end profile_img --%>
+					
+				<%-- 상품 등록 form --%>
+				<div class="productTitle">
+					<h3 align="center">상품&nbsp;등록</h3><p>					
+					
+					<%-- 상품 등록 --%>
+					<table class="productForm" align="center">
+					
+						<tr><th></th></tr>
+						
+						<tr>
+							<th>상품명</th>
+							<td align="left"><input type="text" class="#" name="product_title"></td>
+						</tr> <p>
+						
+						<tr><th></th></tr>
+						
+						<tr>
+							<th><b>가격</b></th>
+							<td align="left"><input type="text" class="#" name="product_price" width="1000px">&nbsp;원</td>
+						</tr>
+						
+						<tr><th></th></tr>
+						
+						<tr>
+							<th>제조사</th>
+							<td align="left"><input type="text" class="#" name="product_maker"></td>
+						</tr> <p>
+										 						
+						<tr>
+							<th>카테고리</th>
+								
+							<td align="left"> <label>분류</label>
+								<select name="product_type">
+									<option value="">선택</option>
+									<optgroup label="사료" id="feed" >
+										<option value="퍼피">퍼피</option>
+										<option value="어덜트">어덜트</option>
+										<option value="시니어">시니어</option>
+									<optgroup label="간식" id="gansik" value="gansik">
+										<option value="껌간식">껌간식</option>
+										<option value="일반간식">일반간식</option>
+									<optgroup label="영양제" id="medicine" value="medicine">
+										<option value="유산균">유산균</option>
+										<option value="오메가3">오메가3</option>
+								</select>								
+								
+
+							
+						</tr> <p>
+						
+						<tr><th></th></tr>
+						
+						<tr>
+							<th>메인<br>이미지</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지1</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지2</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지3</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지4</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지5</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지6</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지7</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지8</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지9</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						<tr>
+							<th>상세페이지<br>이미지10</th>
+							<td align="left"><input type="file" onchange="openFile(event)" /></td>
+						</tr>
+						
+						
+					</table> <p><p>
+					
+					<input type="submit" value="등록" />
+					<input type="reset" value="취소" onclick="location='productList.jsp'" />
+				
+				</div> <%-- end product--%>
+					
+				</div><%-- adminMainpage 끝--%>
+				</form>
+			</div> <%-- end main --%>
+			
+			
+
+
+
+			
+			<%-- top버튼 삭제 X --%>
+			<div id="topBtn">
+				<span class="fonti um-arrow-circle-up um-3x icon"></span>TOP
+			</div>
+		</section>
+	<%-- 푸터 영역 --%>
+	<footer>
+		<!-- footer -->
+		<jsp:include page="/page/include/footer.jsp"/>
+		<!-- footer 끝 -->
+	</footer>
+	</div>
+	<script type="text/javascript">
+	
+		<%-- top버튼 부분 --%>
+		// 클릭 이벤트 핸들러
+		$("#topBtn").click(function(e) {
+			e.stopPropagation();
+			$("html, body").animate({
+				scrollTop : 0
+			}, 'fast', 'easeOutCubic');
+		});
+
+		// 스크롤 이벤트 핸들러
+		$(window).scroll(function() {
+			if ($(window).scrollTop() == 0) {
+				$("#topBtn").css("opacity", 0); // TOP 버튼 숨기기
+			} else {
+				$("#topBtn").css("opacity", 1); // TOP 버튼 나타내기
+			}
+		});
+	</script>
+</body>
+</html>
